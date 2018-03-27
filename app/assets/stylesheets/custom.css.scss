@@ -1,0 +1,53 @@
+header{
+  margin: 10px auto;
+}
+.menu_norm{
+  background: #31b0d5;
+  height: 50px;
+}
+.menu_login{
+  background: #d3edf8;
+  color: #428bca;
+  height: 50px;
+}
+.menu_login > p{
+  padding: 15px 20px;
+}
+
+h1{
+  float: left;
+  font-size: 20px;
+  margin-top: 13px;
+}
+.email{
+  float: right;
+}
+tbody{
+  clear: left;
+}
+.container{
+  width: 900px;
+  position:relative;
+}
+button{
+  position: inherit;
+  float: right;
+  margin-bottom: 100px;
+}
+.paymant_info{
+  position:relative;
+}
+nav{
+  position:inherit;
+  top:10px;
+}
+.paymant_info{
+  clear: right;
+  width: 900px;
+  margin: auto;
+}
+.paymants_from{
+  margin-top: 50px;
+  position: initial;
+}
+

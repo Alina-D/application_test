@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ApplicationTest</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <header>
+    <div class="menu_norm">
+      <% if user_signed_in? %>
+          <%= link_to 'Main page' %>
+          <%= link_to 'Payments' %>
+          <strong class="email">Logout(<%= current_user.email %>)</strong>
+          <h1>Application</h1>
+          <%= link_to "Выйти", destroy_user_session_path, method: :delete%>
+          </div>
+      <% else %>
+          <div class="menu_login">
+            <p> Welcome to Application. Please login <p>
+          </div>
+      <% end %>
+
+      </header>
+
+  <p id="notice" class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+  <%= yield %>
+  </body>
+</html>
