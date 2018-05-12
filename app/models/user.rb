@@ -8,6 +8,10 @@ class User < ApplicationRecord
 
   attr_accessor :login
 
+  validates :username, length: {minimum: 3}
+  validates :username, :uniqueness => false
+  validates :email, :uniqueness => false
+
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)

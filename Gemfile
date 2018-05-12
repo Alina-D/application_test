@@ -38,6 +38,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'kaminari'
+gem 'toastr-rails'
+
 gem 'devise'
 gem 'pg', '~> 0.18'
 
