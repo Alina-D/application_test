@@ -3,32 +3,39 @@
   <head>
     <title>ApplicationTest</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript">
+      function button_click() {
+        toastr.success("Payment successfully created");
+      }
+    </script>
   </head>
-
   <body>
-  <header>
-    <div class="menu_norm">
+    <header>
       <% if user_signed_in? %>
-          <%= link_to 'Main page' %>
-          <%= link_to 'Payments' %>
-          <strong class="email">Logout(<%= current_user.email %>)</strong>
+        <!--Меню зарегистрированного пользователя-->
+        <div class="menu_register">
           <h1>Application</h1>
-          <%= link_to "Выйти", destroy_user_session_path, method: :delete%>
-          </div>
+          <ul>
+            <li><%= link_to 'Main page'%></li>
+            <li><%= link_to 'Payments', payments_path %></li>
+            <li class="logout">
+              <%= link_to 'Logout', destroy_user_session_path, method: :delete%> (<%= current_user.email %>)
+            </li>
+          </ul>
+        </div>
       <% else %>
-          <div class="menu_login">
-            <p> Welcome to Application. Please login <p>
-          </div>
+        <!--Меню не зарегистрированного пользователя-->
+        <div class="menu_login">
+          <p> Welcome to Application. Please login <p>
+        </div>
       <% end %>
-
-      </header>
-
-  <p id="notice" class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-
-  <%= yield %>
+    </header>
+    <div class="info">
+      <li id="notice" class="notice"><%= notice %></li>
+      <p class="alert"><%= alert %></p>
+    </div>
+    <%= yield %>
   </body>
 </html>

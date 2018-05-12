@@ -1,64 +1,60 @@
 <div class="container">
-  <button type="button" class="btn btn-info">Create Payment</button>
+
+  <!-- Создание платежа -->
+  <div class="button_create">
+    <%= form_for(@payment) do |f| %>
+        <%= f.submit 'Create Payment', :class=> 'btn btn-info', :onclick=> 'button_click()' %>
+  <% end %>
+  </div>
 
   <div class="paymant_info">
+    <% if @payments.present? %>
+      <!-- Начальная и конечная дата -->
+      <div class="paymants_from">
+      <%= raw "Paymants from <b>#{@payments.first.starts_at.strftime("%b %e, %Y")}</b>
+          to <b>#{@payments.last.ends_at.strftime("%b %e, %Y")}</b>" %>
+      </div>
 
-    <div class="paymants_from">
-      <%= "Paymants from #{@payments.first.starts_at} - #{@payments.first.ends_at}" %>
-    </div>
-
-    <table class="table table-striped" width="400px">
-      <thead>
-        <tr>
-          <td> # </td>
-          <td> Dates </td>
-          <td> Creator </td>
-          <td> Actions </td>
-        </tr>
-      </thead>
-      <tbody>
-      <% if @payments.present? %>
-        <% while @payments.first.starts_at < @payments.first.ends_at do %>
-          <% if @payments.first.starts_at.day  == 5 || @payments.first.starts_at.day == 20 %>
+      <!-- Таблица с выплатами -->
+      <table class="table table-striped" width="400px">
+        <thead>
           <tr>
-            <td>1</td>
-            <td><%= @payments.first.starts_at.strftime('%b %d, %Y') %></td>
-            <td> e-mail  </td>
-            <td> </td>
-            <td></td>
+            <td> # </td>
+            <td>Dates </td>
+            <td>Creator </td>
+            <td>Actions </td>
           </tr>
+        </thead>
+        <tbody>
+        <% if @payments.present? %>
+          <% @payments.each do |date| %>
+            <tr>
+              <td class="num"></td>
+              <td><%= date.starts_at.strftime("%b %e, %Y") %> - <%= date.ends_at.strftime("%b %e, %Y") %></td>
+              <td><%= date.user.email %>  </td>
+              <td>
+                <% if current_user.email == date.user.email%>
+                  <%= link_to 'Delete', payment_path(date), method: :delete, data: { confirm: 'Delete?' },
+                              :class=> 'btn btn-danger btn-xs' %>
+                <% end %>
+              </td>
+            </tr>
           <% end %>
-            <% @payments.first.starts_at = @payments.first.starts_at.next_day %>
         <% end %>
-      <% end %>
-      </tbody>
-    </table>
-
-    <nav aria-label="Page navigation">
-      <ul class="pagination">
-        <li>
-          <a href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li>
-          <a href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+        </tbody>
+      </table>
+      <!-- Нумерация строк в таблице -->
+        <script>
+          $('.table tbody tr').each(function(i) {
+              var number = i + 1;
+              $(this).find('td:first').text(number);
+          });
+      </script>
+    <% else %>
+        <p> No data on payments </p>
+    <% end %>
+    <%= paginate @payments %>
 
   </div>
 </div>
 
-
-
-<div class='action-object'>
-
-</div>

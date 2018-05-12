@@ -13,3 +13,21 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery
+//= require bootstrap-sprockets
+//= require toastr
+
+    toastr.options = ({
+        'closeButton': true,
+        'debug': false,
+        'positionClass': 'toast-bottom-right',
+        'onclick': null,
+        'showDuration': '300',
+        'hideDuration': '1500',
+        'timeOut': '5000',
+        'extendedTimeOut': '2000',
+        'showEasing': 'swing',
+        'hideEasing': 'linear',
+        'showMethod': 'fadeI',
+        'hideMethod': 'fadeOut'
+    });

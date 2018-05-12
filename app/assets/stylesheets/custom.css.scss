@@ -1,23 +1,42 @@
 header{
   margin: 10px auto;
 }
-.menu_norm{
+.menu_register{
   background: #31b0d5;
   height: 50px;
+  padding-top: 15px;
+  border-radius: 5px;
+}
+ul{
+  list-style: none;
+  margin: 2px;
+}
+li{
+  display: inline;
+}
+li>a{
+  color: white;
+  margin-left: 10px;
+}
+.logout{
+  float: right;
+  margin-right: 15px;
+  color: white;
 }
 .menu_login{
   background: #d3edf8;
   color: #428bca;
   height: 50px;
+  border-radius: 5px;
 }
-.menu_login > p{
+.menu_login>p{
   padding: 15px 20px;
 }
-
 h1{
   float: left;
   font-size: 20px;
-  margin-top: 13px;
+  margin: 0px 20px;
+  color: white;
 }
 .email{
   float: right;
@@ -26,22 +45,29 @@ tbody{
   clear: left;
 }
 .container{
-  width: 900px;
+  width: 700px;
   position:relative;
 }
-button{
+.button_create{
   position: inherit;
   float: right;
-  margin-bottom: 100px;
+
 }
-.paymant_info{
-  position:relative;
+.table{
+  width: 700px;
+}
+table {
+  counter-reset: rowNumber;
+}
+thead, .num{
+  font-weight: 600;
 }
 nav{
   position:inherit;
   top:10px;
 }
 .paymant_info{
+  position:relative;
   clear: right;
   width: 900px;
   margin: auto;
@@ -49,5 +75,70 @@ nav{
 .paymants_from{
   margin-top: 50px;
   position: initial;
+  color: gray;
 }
+.field {
+  clear: both;
+  text-align: right;
+}
+.field label {
+  float: left;
+  padding-top: 15px;
 
+}
+.field input {
+  width: 400px;
+  padding-left: 5px;
+  margin: 5px 15px;
+}
+.form_input{
+  float: left;
+  clear: both;
+  margin: 0 auto;
+}
+.actions{
+  clear: both;
+}
+.actions>input{
+  width: 400px;
+  padding-left: 5px;
+  margin: 5px 15px;
+  float: right;
+}
+.alert{
+  padding: 0px;
+}
+.checkbox_remember{
+  clear: both;
+  float: left;
+  margin-left: 85px;
+}
+.checkbox_remember>p{
+  float: left;
+  margin: 5px;
+}
+.checkbox_remember>input{
+  float: left;
+}
+.form_input + p {
+  clear: both;
+  float: left;
+  margin-top: 5px;
+  margin-left: 85px;
+}
+.container > a{
+  float: left;
+  margin: 5px;
+}
+.info{
+  text-align: center;
+}
+.btn-danger{
+  float: left;
+}
+#error_explanation li{
+  margin-left: 20px;
+}
+h2{
+  font-size: 24px;
+}
